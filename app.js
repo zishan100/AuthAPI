@@ -30,7 +30,7 @@ mongoose.connect(Config.MONGO_DB,{ useNewUrlParser: true })
                 console.log("something error in server", err);
                 return;
             }
-            console.log(`${Config.NODE_ENV} Server Running on ${Config.PORT}`);
+            console.log(`${Config.NODE_ENV} SERVER RUNNNIG ON ${Config.PORT}`);
         });
     })
     .catch(err => console.log(`Error in DB Connection ${err}`));
