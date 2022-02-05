@@ -8,13 +8,10 @@ const {validationResult} = require('express-validator');
 /*how to hashing any pain text using 'crypto' library */
 // const Crypto = require('crypto')
 // const hash=Crypto.createHmac('sha256', "ruewiorwuior").update('hi everyone guys').digest('hex');
-
-
-
 // Post Request ==> /api/user/register/
-exports.UserRegister =async(req, res, next) => {
+
+exports.UserRegister = async (req, res, next) => {
       
-    
   try {
      
      console.log(req.body);

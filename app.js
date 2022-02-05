@@ -1,13 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const Config = require('./config');
 const mongoose = require('mongoose');
 const port =process.env.PORT || 8033;
 require('dotenv').config();
 app.use(bodyParser.json());
 const AuthRoute = require('./Route/authRoute');
-
-
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -16,9 +15,11 @@ app.use((req, res, next) => {
   next();
 });
 
+console.log(`${Config.MONGO_DB}  ${Config.PORT} ${Config.ACCESS_TOKEN_KEY} `)
+
 app.use('/api/user/', AuthRoute);
 app.use('/api/admin/',require('./Route/prodRoute'));
-mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true })
+mongoose.connect(Config.MONGO_DB, { useNewUrlParser: true })
     .then(result => {
        
         console.log("Database Connect Successfully...");
