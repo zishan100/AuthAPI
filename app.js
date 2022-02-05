@@ -3,11 +3,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const Config = require('./config');
 const mongoose = require('mongoose');
-const port =process.env.PORT || 8033;
-require('dotenv').config();
+const port =Config.PORT || 8033;
 app.use(bodyParser.json());
 const AuthRoute = require('./Route/authRoute');
-
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods","GET,POST, PUT ,DELETE ,PATCH");
@@ -15,11 +13,15 @@ app.use((req, res, next) => {
   next();
 });
 
-console.log(`${Config.MONGO_DB}  ${Config.PORT} ${Config.ACCESS_TOKEN_KEY} `)
+ 
+
+ 
+       
+    // console.log(`${Config.MONGO_DB}  ${Config.PORT} ${Config.ACCESS_TOKEN_KEY} `)
 
 app.use('/api/user/', AuthRoute);
 app.use('/api/admin/',require('./Route/prodRoute'));
-mongoose.connect(Config.MONGO_DB, { useNewUrlParser: true })
+mongoose.connect(Config.MONGO_DB,{ useNewUrlParser: true })
     .then(result => {
        
         console.log("Database Connect Successfully...");
@@ -28,7 +30,7 @@ mongoose.connect(Config.MONGO_DB, { useNewUrlParser: true })
                 console.log("something error in server", err);
                 return;
             }
-            console.log("Server is Running on Port", port);
+            console.log(`${Config.NODE_ENV} Server Running on ${Config.PORT}`);
         });
     })
     .catch(err => console.log(`Error in DB Connection ${err}`));
