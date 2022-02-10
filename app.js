@@ -14,14 +14,18 @@ app.use((req, res, next) => {
 });
 
  
-
+app.get('/', (req,res) => {
+     
+    res.send(`response send sucessfully...`)
+     
+})
  
-       
-    // console.log(`${Config.MONGO_DB}  ${Config.PORT} ${Config.ACCESS_TOKEN_KEY} `)
+// console.log(`${Config.MONGO_DB}  ${Config.PORT} ${Config.ACCESS_TOKEN_KEY} `)
 
 app.use('/api/user/', AuthRoute);
 app.use('/api/admin/',require('./Route/prodRoute'));
-mongoose.connect(Config.MONGO_DB,{ useNewUrlParser: true })
+
+mongoose.connect(Config.MONGO_DB, { useNewUrlParser: true })
     .then(result => {
        
         console.log("Database Connect Successfully...");

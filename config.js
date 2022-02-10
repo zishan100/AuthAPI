@@ -1,6 +1,7 @@
 require('dotenv').config();
    
 console.log(process.env.NODE_ENV, " ", process.env.MONGODB_ATLAS);
+
 module.exports = {
     NODE_ENV:process.env.NODE_ENV || 'production',
     PORT:process.env.PORT || 8033,
