@@ -74,7 +74,12 @@ const AuthRoute = require('./Route/authRoute');
     next();
   });
 
-  app.get('/', (req,res) => {
+app.get('/', (req, res) => {
+      
+    for (let i = 0;i<1e8;i++){
+      
+    }
+        
     res.send(`response send sucessfully...`)
   })
  
