@@ -43,7 +43,7 @@ if (cluster.isMaster) {
 
   // console.log(`${Config.MONGO_DB}  ${Config.PORT} ${Config.ACCESS_TOKEN_KEY} `)
 
-  //  app.use('/api/user/', AuthRoute);
+  app.use("/api/user/", AuthRoute);
   //  app.use('/api/admin/',require('./Route/prodRoute'));
   // app.listen(port, (err) => {
   //   if (err) {
